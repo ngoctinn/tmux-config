@@ -1,117 +1,113 @@
-# 🪟 Cẩm Nang Sử Dụng Cấu Hình TMUX (Melange Theme)
+# Cấu hình TMUX
 
-Tài liệu này được biên soạn ngắn gọn, trực quan và đầy đủ để bạn **tra cứu nhanh và sử dụng hàng ngày**, cũng như biết cách tự tinh chỉnh lại theo ý muốn.
-
-Cấu hình được thiết kế theo phong cách hiện đại (chuẩn XDG `~/.config/tmux/`), đồng bộ màu sắc **Melange** với Neovim, tích hợp **vim-tmux-navigator** và 4 cửa sổ **Popup tiện ích**.
+Cấu hình Tmux theo chuẩn XDG (`~/.config/tmux/`), sử dụng bảng màu Melange đồng bộ với Neovim, tích hợp điều hướng trực tiếp giữa các cửa sổ và hệ thống cửa sổ popup chức năng.
 
 ---
 
-## ⚡ Phím Prefix Chính
-> **`Ctrl + a`** *(Đã thay thế cho phím mặc định `Ctrl + b` của Tmux)*.
-> Mọi tổ hợp phím bên dưới có chữ **`Prefix`** nghĩa là bạn bấm **`Ctrl + a`**, thả tay ra rồi bấm phím tiếp theo.
+## 1. Phím Prefix
+
+Phím kích hoạt lệnh (Prefix): `Ctrl + a` (thay thế cho mặc định `Ctrl + b`).
 
 ---
 
-## 1. 🧭 Điều hướng siêu tốc giữa Tmux và Neovim
-Bạn **KHÔNG CẦN** bấm Prefix! Chỉ cần bấm trực tiếp:
+## 2. Điều hướng giữa Tmux và Neovim
 
-| Phím tắt | Tác vụ |
+Không cần bấm phím Prefix. Sử dụng trực tiếp các tổ hợp phím sau để di chuyển giữa các cửa sổ Neovim và các pane Tmux:
+
+| Phím tắt | Hướng di chuyển |
 | :--- | :--- |
-| **`Ctrl + h`** | Nhảy sang cửa sổ / pane bên **Trái** |
-| **`Ctrl + j`** | Nhảy xuống cửa sổ / pane bên **Dưới** |
-| **`Ctrl + k`** | Nhảy lên cửa sổ / pane bên **Trên** |
-| **`Ctrl + l`** | Nhảy sang cửa sổ / pane bên **Phải** |
+| `Ctrl + h` | Sang trái |
+| `Ctrl + j` | Xuống dưới |
+| `Ctrl + k` | Lên trên |
+| `Ctrl + l` | Sang phải |
 
-> 💡 **Điểm đặc biệt**: Khi bạn đang mở Neovim, các phím này sẽ chuyển đổi giữa các split trong Neovim. Khi con trỏ chạm mép Neovim, nó sẽ **tự động nhảy mượt mà sang pane Tmux kế bên**!
+Khi con trỏ chạm cạnh của một cửa sổ Neovim, lệnh sẽ tự động chuyển tiêu điểm sang pane Tmux liền kề.
 
 ---
 
-## 2. 🪟 Quản lý Pane (Chia màn hình)
+## 3. Thao tác Pane
 
-| Phím tắt | Tác vụ |
+| Phím tắt | Chức năng |
 | :--- | :--- |
-| **`Prefix` + `\|`** hoặc **`v`** | Chia đôi pane theo chiều **Dọc** (giữ nguyên thư mục đang đứng) |
-| **`Prefix` + `-`** hoặc **`s`** | Chia đôi pane theo chiều **Ngang** (giữ nguyên thư mục đang đứng) |
-| **`Prefix` + `m`** | Phóng to (Zoom) pane hiện tại toàn màn hình / Thu nhỏ lại |
-| **`Prefix` + `x`** | Đóng pane hiện tại ngay lập tức (không cần hỏi xác nhận) |
-| **`Prefix` + `b`** | Tách pane hiện tại thành một Window (tab) riêng biệt |
-| **`Prefix` + `H / J / K / L`** | Tăng/giảm kích thước pane (Resize 5 ký tự) |
+| `Prefix` + `\|` hoặc `v` | Chia pane theo chiều dọc, giữ nguyên thư mục làm việc hiện tại |
+| `Prefix` + `-` hoặc `s` | Chia pane theo chiều ngang, giữ nguyên thư mục làm việc hiện tại |
+| `Prefix` + `m` | Bật hoặc tắt chế độ phóng to toàn màn hình cho pane hiện tại |
+| `Prefix` + `x` | Đóng pane hiện tại ngay lập tức không cần xác nhận |
+| `Prefix` + `b` | Tách pane hiện tại thành một window độc lập |
+| `Prefix` + `H / J / K / L` | Thay đổi kích thước pane tương ứng 5 dòng hoặc cột |
 
 ---
 
-## 3. 📑 Quản lý Window (Tab làm việc)
+## 4. Thao tác Window
 
-| Phím tắt | Tác vụ |
+| Phím tắt | Chức năng |
 | :--- | :--- |
-| **`Prefix` + `c`** | Tạo Window mới (tự động mở đúng thư mục hiện tại) |
-| **`Prefix` + `<Space>`** | Nhảy nhanh qua lại giữa 2 Window gần nhất |
-| **`Prefix` + `1, 2, 3...`** | Chuyển trực tiếp tới Window số 1, 2, 3... |
-| **`Prefix` + `,`** | Đổi tên cho Window hiện tại |
-| **`Prefix` + `&`** | Đóng Window hiện tại |
+| `Prefix` + `c` | Tạo window mới tại thư mục làm việc hiện tại |
+| `Prefix` + `Space` | Chuyển đổi qua lại giữa hai window sử dụng gần nhất |
+| `Prefix` + `1, 2, 3...` | Nhảy trực tiếp đến window theo số thứ tự |
+| `Prefix` + `,` | Đổi tên window |
+| `Prefix` + `&` | Đóng window hiện tại |
 
-*(Cấu hình đã bật tự động đánh số lại: Khi bạn đóng Window số 2 thì Window số 3 sẽ tự động chuyển thành số 2).*
+Hệ thống tự động đánh số lại các window khi có một window bị đóng.
 
 ---
 
-## 4. 🚀 4 Cửa sổ Popup đặc biệt (Rất tiện lợi)
+## 5. Cửa sổ Popup
 
-| Phím tắt | Popup được mở | Cách sử dụng & Thoát |
+| Phím tắt | Chức năng | Thao tác |
 | :--- | :--- | :--- |
-| **`Prefix` + `w`** | **Menu chuyển Session / Window** | Danh sách dạng cây mở ra qua `fzf`. Gõ vài ký tự rồi ấn `Enter` để nhảy tới bất kỳ Session/Window nào. |
-| **`Prefix` + `T`** | **Scratchpad Terminal nổi** | Mở một terminal tạm thời ở giữa màn hình (80% kích thước). Để đóng, bấm **`T`** hoặc **`q`**. |
-| **`Prefix` + `g`** | **LazyGit toàn màn hình** | Mở giao diện Git trực quan để stage, commit, push cực nhanh. Bấm `q` trong LazyGit để thoát. |
-| **`Prefix` + `S`** | **Menu kết nối nhanh SSH** | Đọc danh sách máy chủ trong `~/.ssh/config` và mở kết nối trong window mới qua `fzf`. |
+| `Prefix` + `w` | Menu chuyển đổi Session và Window | Hiển thị danh sách dạng cây qua fzf để tìm kiếm và chọn session |
+| `Prefix` + `T` | Terminal nổi tạm thời | Cửa sổ dòng lệnh nổi ở giữa màn hình; đóng bằng phím `T` hoặc `q` |
+| `Prefix` + `g` | Giao diện LazyGit | Mở LazyGit toàn màn hình; đóng bằng phím `q` trong LazyGit |
+| `Prefix` + `S` | Menu kết nối SSH | Lấy danh sách máy chủ từ `~/.ssh/config` và kết nối qua fzf |
 
 ---
 
-## 5. 📋 Copy Mode chuẩn Vim (Sao chép vào Clipboard hệ thống)
+## 6. Chế độ sao chép (Copy Mode)
 
-| Phím tắt | Tác vụ |
+Sử dụng phím điều hướng theo phong cách Vim và tích hợp clipboard hệ thống (`wl-copy`):
+
+| Phím tắt | Chức năng |
 | :--- | :--- |
-| **`Prefix` + `[`** | Bắt đầu vào chế độ Copy Mode (để cuộn xem log, copy chữ) |
-| **`k / j`** hoặc cuộn chuột | Di chuyển con trỏ lên / xuống |
-| **`v`** | Bắt đầu bôi đen văn bản (Visual mode) |
-| **`Ctrl + v`** | Bôi đen theo khối hình chữ nhật (Block visual) |
-| **`y`** | Sao chép đoạn đã chọn vào **Clipboard hệ thống** (`wl-copy`) và thoát mode |
-| **`Prefix` + `]`** | Dán nội dung vừa copy của Tmux |
+| `Prefix` + `[` | Vào chế độ cuộn và sao chép văn bản |
+| `k` / `j` hoặc con lăn chuột | Di chuyển con trỏ lên / xuống |
+| `v` | Bắt đầu chọn văn bản |
+| `Ctrl + v` | Bắt đầu chọn khối văn bản dạng hình chữ nhật |
+| `y` | Sao chép phần văn bản đã chọn vào clipboard hệ thống và thoát chế độ |
+| `Prefix` + `]` | Dán nội dung bộ đệm của Tmux |
 
 ---
 
-## 6. 💾 Tự động lưu & Khôi phục Session (Resurrect & Continuum)
+## 7. Tự động lưu và khôi phục Session
 
-- **Tự động lưu**: Hệ thống tự động sao lưu trạng thái các session, window, pane **mỗi 1 phút** một lần.
-- **Tự động khôi phục khi khởi động**: Khi bạn tắt máy bật lại hoặc mở Tmux lần đầu, toàn bộ layout và session cũ sẽ được **tự động phục hồi nguyên vẹn**.
-- **Thao tác thủ công (nếu cần)**:
-  - `Prefix` + **`Ctrl + s`**: Lưu session thủ công ngay lập tức.
-  - `Prefix` + **`Ctrl + r`**: Khôi phục session thủ công.
-
----
-
-## 7. 🔌 Quản lý Plugins (TPM)
-
-Plugins được quản lý qua [TPM](https://github.com/tmux-plugins/tpm) tại `~/.config/tmux/plugins/`:
-
-- **`Prefix` + `I`** *(Shift + i)*: Cài đặt các plugin mới thêm vào `tmux.conf`.
-- **`Prefix` + `U`** *(Shift + u)*: Cập nhật toàn bộ plugin lên bản mới nhất.
-- **`Prefix` + `Alt + u`**: Gỡ bỏ các plugin đã xóa khỏi `tmux.conf`.
+Hệ thống sử dụng hai plugin `tmux-resurrect` và `tmux-continuum`:
+- Tự động lưu trạng thái toàn bộ session định kỳ mỗi phút.
+- Tự động khôi phục phiên làm việc trước đó khi Tmux được khởi động lại.
+- Lưu thủ công: `Prefix` + `Ctrl + s`.
+- Khôi phục thủ công: `Prefix` + `Ctrl + r`.
 
 ---
 
-## 8. 🛠️ Hướng dẫn tự chỉnh sửa cấu hình
+## 8. Quản lý Plugins
 
-Tệp cấu hình chính nằm tại: **`~/.config/tmux/tmux.conf`**.
+Quản lý thông qua TPM (Tmux Plugin Manager) tại thư mục `~/.config/tmux/plugins/`:
 
-Sau khi sửa bất kỳ dòng nào, bạn chỉ cần bấm:
-> **`Prefix` + `r`** ➔ Tmux sẽ tải lại cấu hình ngay lập tức và hiện thông báo `󰑓 Config reloaded`.
+- `Prefix` + `I`: Cài đặt các plugin mới khai báo trong cấu hình.
+- `Prefix` + `U`: Cập nhật toàn bộ plugin.
+- `Prefix` + `Alt + u`: Xóa các plugin không còn sử dụng.
 
-### Các vị trí thường muốn chỉnh sửa:
-1. **Đổi phím Prefix**:
-   Tìm dòng `set -g prefix C-a` và đổi `C-a` thành phím bạn muốn (ví dụ `C-Space`).
-2. **Đổi màu Status Bar (Theme Melange)**:
-   Tìm phần `##### Theme (Melange) #####` (khoảng dòng 83):
-   - `bg='#292522'`: Màu nền chính (nâu đen ấm)
-   - `fg='#ece1d7'`: Màu chữ chính (trắng be)
-   - `accent='#ebc06d'`: Màu viền active và tên session (vàng)
-3. **Đổi vị trí thanh trạng thái**:
-   - Mặc định đang ở trên đỉnh: `set-option -g status-position top`
-   - Đổi xuống đáy màn hình: sửa `top` thành `bottom`.
+---
+
+## 9. Tùy biến cấu hình
+
+Tệp cấu hình chính đặt tại `~/.config/tmux/tmux.conf`.
+
+Sau khi chỉnh sửa, nạp lại cấu hình bằng phím tắt:
+```
+Prefix + r
+```
+
+### Các thông số chính trong `tmux.conf`:
+- `set -g prefix C-a`: Thiết lập phím Prefix.
+- `status-position top`: Đặt thanh trạng thái ở cạnh trên màn hình (đổi thành `bottom` nếu muốn ở dưới).
+- Khối `Theme (Melange)`: Thiết lập màu sắc giao diện theo mã màu hex.
