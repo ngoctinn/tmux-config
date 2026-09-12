@@ -1,0 +1,10 @@
+# Plugins managed by TPM
+plugins/
+
+# Session saves from tmux-resurrect
+resurrect/
+
+# OS / Editor temporary files
+*.log
+.DS_Store
+Thumbs.db
